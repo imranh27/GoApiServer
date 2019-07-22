@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0c3659b-d090-44f2-a72b-80cb683695c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/GoApiServer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/pages.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
-    </list>
+    <list default="true" id="b0c3659b-d090-44f2-a72b-80cb683695c1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="22" />
     <option name="y" value="25" />
     <option name="width" value="1582" />
@@ -120,7 +112,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="25" width="1582" height="1008" extended-state="1" />
+    <frame x="22" y="25" width="1582" height="1008" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
