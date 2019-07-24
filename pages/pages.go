@@ -1,7 +1,10 @@
 package pages
 
 import (
+	"GoApiServer/model"
+	"encoding/json"
 	"fmt"
+	"github.com/jinzhu/gorm"
 	"net/http"
 )
 
@@ -20,8 +23,17 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 //Read
 func UsersReadAll(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Fprintf(w, "Endpoint: Return All Users ")
+	db, err := gorm.Open("sqlite3", "test.db")
+	if err != nil {
+		panic("could not connect to the database")
+	}
+	defer db.Close()
 
+	var users []model.User
+	db.Find(&users)
+	json.NewEncoder(w).Encode(users)
+
+	//fmt.Fprintf(w, "Endpoint: Return All Users ")
 }
 
 func UserReadOne(w http.ResponseWriter, r *http.Request) {

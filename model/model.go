@@ -19,7 +19,7 @@ func InitialMigration() {
 	db, err = gorm.Open("sqlite3", "test.db")
 	if err != nil {
 		fmt.Println(err.Error())
-		panic("falied to connect to database")
+		panic("failed to connect to database")
 	}
 	defer db.Close()
 
