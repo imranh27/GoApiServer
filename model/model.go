@@ -8,6 +8,9 @@ import (
 
 var db *gorm.DB
 var err error
+var dbdialect = "sqlite3"
+var dbname = "test.db"
+
 
 type User struct {
 	gorm.Model
@@ -16,7 +19,7 @@ type User struct {
 }
 
 func InitialMigration() {
-	db, err = gorm.Open("sqlite3", "test.db")
+	db, err = gorm.Open(dbdialect, dbname)
 	if err != nil {
 		fmt.Println(err.Error())
 		panic("failed to connect to database")
@@ -24,4 +27,14 @@ func InitialMigration() {
 	defer db.Close()
 
 	db.AutoMigrate(&User{})
+}
+
+func DbConnect() {
+
+	db, err := gorm.Open("sqlite3", "test.db")
+	if err != nil {
+		panic("could not connect to the database")
+	}
+	defer db.Close()
+
 }
