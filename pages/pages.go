@@ -21,7 +21,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 //Create
 func UserCreate(w http.ResponseWriter, r *http.Request) {
 
-	db, err := gorm.Open("sqlite3", "test.db")
+	db, err := gorm.Open(dbdialect, dbname)
 	if err != nil {
 		panic("could not connect to the database")
 	}
@@ -65,22 +65,39 @@ func UserReadOne(w http.ResponseWriter, r *http.Request) {
 
 //Update
 func UserUpdateEmail(w http.ResponseWriter, r *http.Request) {
-	db, err := gorm.Open(dbdialect,dbname)
+	db, err := gorm.Open(dbdialect, dbname)
 	if err != nil {
 		panic("could not connect to database")
 	}
 	defer db.Close()
 
-	fmt.Fprintf(w, "Endpoint: Update User")
+	vars := mux.Vars(r)
+	name := vars["name"]
+	email := vars["email"]
+
+	var users model.User //maps struct to table
+	db.Where("name = ?", name).Find(&users)
+
+	users.Email = email
+	db.Save(&users)
+	fmt.Fprintf(w, "email updated")
 }
 
 //Delete
 func UserDelete(w http.ResponseWriter, r *http.Request) {
 	db, err := gorm.Open(dbdialect, dbname)
 	if err != nil {
-		panic("could not open databaase")
+		panic("could not open database")
 	}
 	defer db.Close()
 
-	fmt.Fprintf(w, "Endpoint: Delete User")
+	vars := mux.Vars(r)
+	name := vars["name"]
+
+	db.Where("name = ?", name).Find(&name)
+	db.Delete(&name)
+
+	fmt.Fprintf(w, "deleted user")
+
+	//fmt.Fprintf(w, "Endpoint: Delete User")
 }
