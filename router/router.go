@@ -14,7 +14,7 @@ func HandleRequests() {
 	myRouter.HandleFunc("/", pages.HomePage).Methods("GET")
 	myRouter.HandleFunc("/users/{name}/{email}", pages.UserCreate).Methods("POST")
 	myRouter.HandleFunc("/users", pages.UsersReadAll).Methods("GET")
-	//myRouter.HandleFunc("/users/{name}", pages.UserReadOne).Methods("GET")
+	myRouter.HandleFunc("/users/{name}", pages.UserReadOne).Methods("GET")
 	myRouter.HandleFunc("/users/{name}/{email}", pages.UserUpdateEmail).Methods("PUT")
 	myRouter.HandleFunc("/users/{name}", pages.UserDelete).Methods("DELETE")
 

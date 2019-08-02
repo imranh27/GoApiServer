@@ -60,7 +60,14 @@ func UserReadOne(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	fmt.Fprintf(w, "Endpoint: Return a User")
+	vars := mux.Vars(r)
+	name := vars["name"]
+
+	var users []model.User
+	db.Where("name = ?", name).Find(&users)
+	json.NewEncoder(w).Encode(users)
+
+	//fmt.Fprintf(w, "Endpoint: Return a User")
 }
 
 //Update
